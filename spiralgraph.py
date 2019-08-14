@@ -37,13 +37,12 @@ def plot_circle(j):
         x = np.linspace(X_CENTER-RADIUS, X_CENTER+RADIUS, half_time)
         y1, y2 = calc_image(X_CENTER, Y_CENTER, RADIUS, x[i])
 
-        global last_x
-
         X_IMAGE2.append(x[i])
         Y_IMAGE2.append(y1)
 
         # ===========================================
         # TESTE CIRCULO INTERNO
+        global last_x
         x2 = np.linspace(x[i]-RADIUS2, x[i]+RADIUS2, half_time)
         for k in range(half_time):
             if k+i < half_time and (k+i)%2 == 0:
@@ -57,7 +56,7 @@ def plot_circle(j):
 
             else:
                 if k+i < frm and (k+i)%2 == 0:
-                    if x2[k+i] > last_x:
+                    if x2[k+i-1] > last_x:
                         y1_2, y2_2 = calc_image(x[i], y1, RADIUS2, x2[k+i])
 
                         X_IMAGE.append(x2[k+i])
